@@ -1,5 +1,4 @@
 import createHTMLElement from '../js/createHTMLElement.js';
-import SearchResult from './SearchResult.js';
 
 export default class Search {
   constructor({ $target, onSearch }) {
