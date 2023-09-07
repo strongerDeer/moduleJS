@@ -5,22 +5,30 @@ export default class SearchResult {
   data = null;
 
   constructor({ $target, initialData }) {
-    const $wrapper = createHTMLElement('section');
-    const $ul = createHTMLElement('ul', { class: 'search-result' });
-    this.$ul = $ul;
-    $wrapper.appendChild($ul);
-    $target.appendChild($wrapper);
-
+    this.$target = $target;
     this.data = initialData;
   }
 
   setState(nextData) {
     this.data = nextData;
-
     this.render();
   }
   render() {
-    this.data.forEach((book, index) => {
+    const dataLength = this.data.length;
+
+    const $wrapper = createHTMLElement('section');
+
+    const $ul = createHTMLElement('ul', { class: 'search-result' });
+    const $searchTitle = createHTMLElement(
+      'h2',
+      null,
+      dataLength !== 0 ? `검색결과 ${dataLength}개` : `검색결과가 없습니다.`,
+    );
+    $wrapper.appendChild($searchTitle);
+    $wrapper.appendChild($ul);
+    this.$target.appendChild($wrapper);
+
+    this.data.forEach((book) => {
       const $li = createHTMLElement('li');
       const $thumbnail = createHTMLElement('img', {
         src: book.thumbnail,
@@ -34,7 +42,7 @@ export default class SearchResult {
       $li.appendChild($bookTitle);
       $li.appendChild($bookAuthors);
       $li.appendChild($bookPublisher);
-      this.$ul.appendChild($li);
+      $ul.appendChild($li);
     });
   }
 }
