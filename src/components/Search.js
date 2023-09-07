@@ -1,4 +1,5 @@
 import createHTMLElement from '../js/createHTMLElement.js';
+import SearchResult from './SearchResult.js';
 
 export default class Search {
   constructor({ $target, onSearch }) {
@@ -10,17 +11,11 @@ export default class Search {
       placeholder: '책 이름을 입력하세요',
     });
     const $button = createHTMLElement('button', { type: 'submit' }, '검색');
-    this.$header = $header;
-    this.$h1 = $h1;
-    this.$form = $form;
-    this.$searchInput = $searchInput;
-    this.$button = $button;
-
-    this.$form.appendChild(this.$searchInput);
-    this.$form.appendChild(this.$button);
-    this.$header.appendChild(this.$h1);
-    this.$header.appendChild(this.$form);
-    $target.appendChild(this.$header);
+    $form.appendChild($searchInput);
+    $form.appendChild($button);
+    $header.appendChild($h1);
+    $header.appendChild($form);
+    $target.appendChild($header);
 
     const handleSubmit = (e) => {
       e.preventDefault();
