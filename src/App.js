@@ -1,4 +1,5 @@
 import Search from './components/Search.js';
+import SearchResult from './components/SearchResult.js';
 import api from './js/api.js';
 
 class App {
@@ -13,9 +14,13 @@ class App {
       onSearch: async (keyword) => {
         const res = await api.fetchBooks(keyword);
         const bookData = res.documents;
-        console.log(bookData);
         this.setState(bookData);
       },
+    });
+
+    this.SearchResult = new SearchResult({
+      $target,
+      initialData: this.data,
     });
 
     this.init();
@@ -27,6 +32,7 @@ class App {
   //상태
   setState(nextData) {
     this.data = nextData;
+    this.SearchResult.setState(nextData);
   }
 }
 
