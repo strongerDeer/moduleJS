@@ -15,10 +15,14 @@ export default class SearchResult {
   }
   render() {
     const dataLength = this.data.length;
+    const isResult = this.$target.querySelector('.search-result');
 
-    const $wrapper = createHTMLElement('section');
+    if (isResult !== null) {
+      isResult.remove();
+    }
+    const $wrapper = createHTMLElement('section', { class: 'search-result' });
 
-    const $ul = createHTMLElement('ul', { class: 'search-result' });
+    const $ul = createHTMLElement('ul');
     const $searchTitle = createHTMLElement(
       'h2',
       null,

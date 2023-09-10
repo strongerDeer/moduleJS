@@ -1,4 +1,5 @@
 import createHTMLElement from '../js/createHTMLElement.js';
+import KeywordHistory from './KeywordHistory.js';
 
 export default class Search {
   constructor({ $target, onSearch }) {
@@ -19,13 +20,24 @@ export default class Search {
     const handleSubmit = (e) => {
       e.preventDefault();
 
-      const keyword = $searchInput.value;
-      if (keyword === ' ') {
+      const keyword = $searchInput.value.trim();
+      if (keyword === '') {
         $searchInput.value = '';
       } else {
+        $searchInput.value = keyword;
+
+        // 검색결과 노출
         onSearch(keyword);
+
+        // 최근키워드 저장
+        this.KeywordHistory.addKeyword(keyword);
       }
     };
+
+    this.KeywordHistory = new KeywordHistory({
+      $target: $header,
+      onSearch,
+    });
 
     $form.addEventListener('submit', handleSubmit);
   }

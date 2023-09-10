@@ -16,19 +16,37 @@ body{
   background-color: #f5f5f5;
 }
 
+/* 공통 */
+.a11y-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+
 /* 검색결과 */
-.search-result{
+.search-result ul{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap:2.4rem;
 }
 
-.search-result li{
+.search-result ul li{
   background-color: #fff;
   padding:2.4rem;
   text-align: center;
 }
-.search-result li img{
+.search-result ul li img{
   height: 20rem;
   object-fit: contain;
+}
+
+/* 검색 키워드 */
+.keyword ol{
+  display: flex;
+  gap:0.8rem;
 }
