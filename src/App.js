@@ -9,6 +9,7 @@ class App {
   constructor($target) {
     this.$target = $target;
 
+    // 검색
     new Search({
       $target,
       onSearch: async (keyword) => {
@@ -18,6 +19,7 @@ class App {
       },
     });
 
+    // 검색결과
     this.SearchResult = new SearchResult({
       $target,
       initialData: this.data,
