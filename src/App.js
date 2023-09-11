@@ -1,5 +1,6 @@
 import SearchInput from './components/SearchInput.js';
 import SearchResult from './components/SearchResult.js';
+import ThemeButton from './components/ThemeButton.js';
 import api from './js/api.js';
 
 class App {
@@ -8,6 +9,11 @@ class App {
 
   constructor($target) {
     this.$target = $target;
+
+    // 테마 적용
+    new ThemeButton({
+      $target,
+    });
 
     // 검색
     new SearchInput({

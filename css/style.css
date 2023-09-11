@@ -50,3 +50,28 @@ body{
   display: flex;
   gap:0.8rem;
 }
+
+/* theme */
+:root{
+  --bgColor: #fff;
+  --textColor: #000;
+}
+.dark{
+  --bgColor: #000;
+  --textColor: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  :root{
+    --bgColor: #000;
+    --textColor: #fff;
+  }
+  .light{
+    --bgColor: #fff;
+    --textColor: #000;
+  }
+}
+
+body{
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
