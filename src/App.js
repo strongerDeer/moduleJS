@@ -1,4 +1,4 @@
-import Search from './components/Search.js';
+import SearchInput from './components/SearchInput.js';
 import SearchResult from './components/SearchResult.js';
 import api from './js/api.js';
 
@@ -10,7 +10,7 @@ class App {
     this.$target = $target;
 
     // 검색
-    new Search({
+    new SearchInput({
       $target,
       onSearch: async (keyword) => {
         const res = await api.fetchBooks(keyword);

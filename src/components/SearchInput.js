@@ -1,7 +1,7 @@
 import createHTMLElement from '../js/createHTMLElement.js';
 import KeywordHistory from './KeywordHistory.js';
 
-export default class Search {
+export default class SearchInput {
   constructor({ $target, onSearch }) {
     const $header = createHTMLElement('header', { class: 'header' });
     const $h1 = createHTMLElement('h1', null, 'search book');
