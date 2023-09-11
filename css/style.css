@@ -55,6 +55,7 @@ body{
 :root{
   --bgColor: #fff;
   --textColor: #000;
+  --dimColor: rgba(0,0,0,0.7);
 }
 .dark{
   --bgColor: #000;
@@ -74,4 +75,28 @@ body{
 body{
   background-color: var(--bgColor);
   color: var(--textColor);
+}
+
+/* 모달 */
+.modal-wrapper{
+  position: fixed;
+  top:0;
+  left: 0;
+  width:100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--dimColor);
+  backdrop-filter: blur(8px);
+}
+
+.modal{
+  background-color: var(--bgColor);
+  padding:2rem;
+  width:400px;
+  position: relative;
+  z-index: 100;
 }

@@ -1,3 +1,4 @@
+import BookInfo from './components/BookInfo.js';
 import SearchInput from './components/SearchInput.js';
 import SearchResult from './components/SearchResult.js';
 import ThemeButton from './components/ThemeButton.js';
@@ -29,6 +30,17 @@ class App {
     this.SearchResult = new SearchResult({
       $target,
       initialData: this.data,
+      onClick: (book) => {
+        this.BookInfo.showModal({
+          visible: true,
+          book,
+        });
+      },
+    });
+
+    // 책정보
+    this.BookInfo = new BookInfo({
+      $target,
     });
 
     this.init();

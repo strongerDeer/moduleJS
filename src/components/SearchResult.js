@@ -4,9 +4,10 @@ export default class SearchResult {
   $searchResult = null;
   data = null;
 
-  constructor({ $target, initialData }) {
+  constructor({ $target, initialData, onClick }) {
     this.$target = $target;
     this.data = initialData;
+    this.onClick = onClick;
   }
 
   setState(nextData) {
@@ -32,8 +33,12 @@ export default class SearchResult {
     $wrapper.appendChild($ul);
     this.$target.appendChild($wrapper);
 
-    this.data.forEach((book) => {
+    this.data.forEach((book, index) => {
       const $li = createHTMLElement('li');
+      const $button = createHTMLElement('button', {
+        type: 'button',
+        'data-index': index,
+      });
       const $thumbnail = createHTMLElement('img', {
         src: book.thumbnail,
         alt: '',
@@ -42,10 +47,16 @@ export default class SearchResult {
       const $bookAuthors = createHTMLElement('p', null, book.authors);
       const $bookPublisher = createHTMLElement('p', null, book.publisher);
 
-      $li.appendChild($thumbnail);
-      $li.appendChild($bookTitle);
-      $li.appendChild($bookAuthors);
-      $li.appendChild($bookPublisher);
+      $button.addEventListener('click', (e) => {
+        const index = Number(e.currentTarget.getAttribute('data-index'));
+        this.onClick(this.data[index]);
+      });
+
+      $button.appendChild($thumbnail);
+      $button.appendChild($bookTitle);
+      $button.appendChild($bookAuthors);
+      $button.appendChild($bookPublisher);
+      $li.appendChild($button);
       $ul.appendChild($li);
     });
   }
