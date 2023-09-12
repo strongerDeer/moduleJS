@@ -56,10 +56,11 @@ const fetchURL = async (url) => {
 };
 
 const api = {
-  fetchBooks: async (keyword) => {
+  fetchBooks: async (keyword, limit) => {
     const params = new URLSearchParams({
       query: keyword,
       page: 1,
+      size: limit ? limit : 10,
     });
     return fetchURL(`${API_ENDPOINT}?${params}`);
   },
