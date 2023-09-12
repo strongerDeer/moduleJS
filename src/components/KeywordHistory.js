@@ -19,6 +19,9 @@ export default class KeywordHistory {
     return savedHistory === null ? [] : savedHistory;
   }
 
+  getLastKeyword() {
+    return this.getHistory()[0];
+  }
   // 키워드 추가하기
   addKeyword(keyword) {
     let keywordHistory = this.getHistory();
