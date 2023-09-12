@@ -25,14 +25,28 @@ export default class SearchInput {
         $searchInput.value = '';
       } else {
         $searchInput.value = keyword;
+        const selectedValue = Number($select.value);
 
         // 검색결과 노출
-        onSearch(keyword);
+        onSearch(keyword, selectedValue);
 
         // 최근키워드 저장
         this.KeywordHistory.addKeyword(keyword);
       }
     };
+
+    // 정렬 UI
+    const $select = createHTMLElement('select', { class: 'count' }, null);
+    const limitCountOptions = [10, 25, 50];
+    limitCountOptions.map((option) => {
+      let $option = createHTMLElement(
+        'option',
+        { value: option },
+        `${option}개`,
+      );
+      $select.appendChild($option);
+    });
+    $header.appendChild($select);
 
     this.KeywordHistory = new KeywordHistory({
       $target: $header,

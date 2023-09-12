@@ -19,8 +19,8 @@ class App {
     // 검색
     new SearchInput({
       $target,
-      onSearch: async (keyword) => {
-        const res = await api.fetchBooks(keyword);
+      onSearch: async (keyword, limit) => {
+        const res = await api.fetchBooks(keyword, limit);
         const bookData = res.documents;
         this.setState(bookData);
       },
