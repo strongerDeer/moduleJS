@@ -1,5 +1,6 @@
 import createHTMLElement from '../js/createHTMLElement.js';
 import KeywordHistory from './KeywordHistory.js';
+import SortingCounter from './SortingCounter.js';
 
 export default class SearchInput {
   constructor({ $target, onSearch }) {
@@ -25,28 +26,19 @@ export default class SearchInput {
         $searchInput.value = '';
       } else {
         $searchInput.value = keyword;
-        const selectedValue = Number($select.value);
+        const sorting = this.SortingCounter.getSorting();
 
         // 검색결과 노출
-        onSearch(keyword, selectedValue);
+        onSearch(keyword, sorting);
 
         // 최근키워드 저장
         this.KeywordHistory.addKeyword(keyword);
       }
     };
 
-    // 정렬 UI
-    const $select = createHTMLElement('select', { class: 'count' }, null);
-    const limitCountOptions = [10, 25, 50];
-    limitCountOptions.map((option) => {
-      let $option = createHTMLElement(
-        'option',
-        { value: option },
-        `${option}개`,
-      );
-      $select.appendChild($option);
+    this.SortingCounter = new SortingCounter({
+      $target: $header,
     });
-    $header.appendChild($select);
 
     this.KeywordHistory = new KeywordHistory({
       $target: $header,

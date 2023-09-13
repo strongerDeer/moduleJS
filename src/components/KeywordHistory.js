@@ -48,9 +48,11 @@ export default class KeywordHistory {
 
   savedKeywordSearch() {
     const $buttons = this.$target.querySelectorAll('button');
+
     $buttons.forEach((button) => {
       button.addEventListener('click', () => {
-        this.onSearch(button.textContent);
+        const sorting = localStorage.getItem('sorting');
+        this.onSearch(button.textContent, sorting ? sorting : 12);
       });
     });
   }
