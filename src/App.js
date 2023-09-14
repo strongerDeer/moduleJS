@@ -1,3 +1,4 @@
+import Banner from './components/Banner.js';
 import BookInfo from './components/BookInfo.js';
 import SearchInput from './components/SearchInput.js';
 import SearchResult from './components/SearchResult.js';
@@ -11,6 +12,11 @@ class App {
   constructor($target) {
     this.$target = $target;
 
+    // 배너
+    this.Banner = new Banner({
+      $target,
+    });
+
     // 테마 적용
     new ThemeButton({
       $target,
@@ -23,6 +29,7 @@ class App {
         const res = await api.fetchBooks(keyword, limit);
         const bookData = res.documents;
         this.setState(bookData);
+        this.saveResult(bookData);
       },
     });
 
@@ -46,13 +53,23 @@ class App {
     this.init();
   }
 
-  // 초기화
-  init() {}
-
   //상태
   setState(nextData) {
     this.data = nextData;
     this.SearchResult.setState(nextData);
+  }
+
+  saveResult(result) {
+    localStorage.setItem('lastResult', JSON.stringify(result));
+  }
+
+  // 초기화
+  init() {
+    const savedlastResult = localStorage.getItem('lastResult');
+    const lastResult =
+      savedlastResult === null ? [] : JSON.parse(savedlastResult);
+
+    this.setState(lastResult);
   }
 }
 

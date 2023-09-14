@@ -100,3 +100,40 @@ body{
   position: relative;
   z-index: 100;
 }
+
+
+/* 배너 */
+.banner{
+  width:100%;
+  aspect-ratio: 5/2;
+  overflow: hidden;
+  position: relative;
+}
+.banner ul{
+  display: flex;
+  height:100%;
+  transition: transform 0.3s;
+}
+.banner ul li{
+  width:100%;
+  height:100%;
+}
+.banner img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+.banner .prev, 
+.banner .next{
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+}
+
+.banner .prev{
+left:0;
+}
+
+.banner .next{
+right:0;
+}

@@ -22,6 +22,7 @@ export default class SearchInput {
       e.preventDefault();
 
       const keyword = $searchInput.value.trim();
+
       if (keyword === '') {
         $searchInput.value = '';
       } else {
@@ -35,14 +36,14 @@ export default class SearchInput {
         this.KeywordHistory.addKeyword(keyword);
       }
     };
-
+    this.KeywordHistory = new KeywordHistory({
+      $target,
+      onSearch,
+    });
     this.SortingCounter = new SortingCounter({
       $target: $header,
-    });
-
-    this.KeywordHistory = new KeywordHistory({
-      $target: $header,
       onSearch,
+      keyword: this.KeywordHistory.getLastKeyword(),
     });
 
     $form.addEventListener('submit', handleSubmit);

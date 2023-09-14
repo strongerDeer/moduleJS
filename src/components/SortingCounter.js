@@ -1,7 +1,8 @@
 import createHTMLElement from '../js/createHTMLElement.js';
 
 export default class SortingCounter {
-  constructor({ $target }) {
+  constructor({ $target, onSearch, keyword }) {
+    // console.log(keyword);
     const $select = createHTMLElement('select', { class: 'count' }, null);
     const limitCountOptions = [12, 24, 48];
     limitCountOptions.map((option) => {
@@ -18,10 +19,14 @@ export default class SortingCounter {
     $target.appendChild($select);
 
     this.$select = $select;
+    this.onSearch = onSearch;
+
     this.init();
 
     $select.addEventListener('change', (e) => {
       localStorage.setItem('sorting', $select.value);
+
+      this.onSearch(keyword, $select.value);
       this.init();
     });
   }
