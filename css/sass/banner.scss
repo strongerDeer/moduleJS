@@ -1,0 +1,58 @@
+.banner {
+  width: 100%;
+  aspect-ratio: 5/2;
+  overflow: hidden;
+  position: relative;
+
+  ul {
+    display: flex;
+    height: 100%;
+    transition: transform 0.3s;
+
+    li {
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .prev {
+    left: 4rem;
+  }
+  .next {
+    right: 4rem;
+  }
+}
+.prev,
+.next {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+
+  background-color: rgba(var(--RGB-bg), 0.5);
+  border: 1px solid rgba(var(--RGB-bg), 0.3);
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: rgba(var(--RGB-bg), 0.7);
+  }
+}
+.prev::before {
+  content: '< ';
+}
+
+.next:after {
+  content: ' >';
+}

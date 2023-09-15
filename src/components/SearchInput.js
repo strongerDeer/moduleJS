@@ -6,6 +6,8 @@ export default class SearchInput {
   constructor({ $target, onSearch }) {
     const $header = createHTMLElement('header', { class: 'header' });
     const $h1 = createHTMLElement('h1', null, 'search book');
+
+    const $div = createHTMLElement('div', { class: 'form-group' });
     const $form = createHTMLElement('form', { class: 'search-form' });
     const $searchInput = createHTMLElement('input', {
       type: 'search',
@@ -15,7 +17,8 @@ export default class SearchInput {
     $form.appendChild($searchInput);
     $form.appendChild($button);
     $header.appendChild($h1);
-    $header.appendChild($form);
+    $div.appendChild($form);
+    $header.appendChild($div);
     $target.appendChild($header);
 
     const handleSubmit = (e) => {
@@ -37,11 +40,11 @@ export default class SearchInput {
       }
     };
     this.KeywordHistory = new KeywordHistory({
-      $target,
+      $target: $header,
       onSearch,
     });
     this.SortingCounter = new SortingCounter({
-      $target: $header,
+      $target: $div,
       onSearch,
       keyword: this.KeywordHistory.getLastKeyword(),
     });

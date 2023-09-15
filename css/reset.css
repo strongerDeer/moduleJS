@@ -1,0 +1,27 @@
+/* reset */
+body, ul, ol, li, p, button{
+  padding:0;
+  margin:0;
+}
+
+ul, ol, li{
+  list-style: none;
+}
+
+input, button, select{
+  font:inherit;
+  color:inherit;
+}
+
+button, select{
+  border:0;
+  background: none;
+}
+
+button:enabled{
+  cursor: pointer;
+}
+
+button:disabled{
+  opacity: 0.5;
+}
