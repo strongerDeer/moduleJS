@@ -66,11 +66,7 @@ export default class KeywordHistory {
 
     if (this.data.length !== 0) {
       const $wrapper = createHTMLElement('section', { class: 'keyword' });
-      const $title = createHTMLElement(
-        'h2',
-        { class: 'a11y-hidden' },
-        '최근 검색어',
-      );
+      const $title = createHTMLElement('h3', null, '최근 검색어');
 
       const $ol = createHTMLElement('ol');
 

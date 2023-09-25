@@ -1,0 +1,66 @@
+.search {
+  @include max-width;
+
+  padding: 2rem 0;
+  .search-form {
+    display: flex;
+    gap: 1.2rem;
+
+    input,
+    select {
+      border: 1px solid #000;
+      border-width: 0 0 1px;
+
+      height: 4rem;
+      transition: all 0.3s;
+
+      &:focus-visible {
+        border-color: #daaa63;
+        outline: none;
+        box-shadow: 0 1px #daaa63, inset 0 -1px #daaa63;
+      }
+    }
+    input {
+      width: 40rem;
+      padding: 1rem;
+
+      &::placeholder {
+        color: #767676;
+        font-size: 0.85em;
+      }
+    }
+    select {
+      width: 8rem;
+    }
+    button {
+      border: 1px solid #000;
+      padding: 0 2rem;
+      border-radius: 1rem;
+    }
+  }
+}
+
+.keyword {
+  margin-top: 1.6rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8em;
+  h3 {
+    font-weight: bold;
+    padding: 0 1rem;
+    word-break: keep-all;
+    padding-top: 0.4em;
+  }
+  ol {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    li {
+      padding: 0.3em 1em;
+      border: 1px solid #ddd;
+      border-radius: 0.3em;
+      color: #767676;
+    }
+  }
+}

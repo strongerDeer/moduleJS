@@ -1,0 +1,96 @@
+.banner {
+  width: 100%;
+  height: clamp(24rem, 40vw, 50rem);
+  overflow: hidden;
+  position: relative;
+
+  ul {
+    display: flex;
+    margin: auto;
+    height: 100%;
+    transition: transform 0.3s;
+
+    li {
+      width: 100%;
+      height: 100%;
+
+      .book-article {
+        max-width: 1000px;
+        width: calc(100% - 20rem);
+        margin: auto;
+        position: relative;
+        height: 100%;
+
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+
+        img {
+          position: absolute;
+          top: 4rem;
+          right: 0;
+          width: 40%;
+          box-shadow: 2rem 2rem 2rem rgba(0, 0, 0, 0.3);
+        }
+
+        .book-content {
+          width: 50%;
+          .book-desc {
+            color: #767676;
+            margin-bottom: 1rem;
+          }
+          .book-title {
+            font-family: 'BookkMyungjo-Bd';
+            font-size: 4.8rem;
+            line-height: 1;
+          }
+          .btn {
+            background-color: #272935;
+            color: #fff;
+            border-radius: 2rem;
+            height: 3.6rem;
+            padding: 0 2rem;
+            margin-top: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 2rem;
+            span {
+              font-size: 1em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prev {
+  left: 2rem;
+}
+.next {
+  right: 2rem;
+}
+
+.prev,
+.next {
+  width: 7.2rem;
+  height: 7.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(var(--RGB-bg), 0.5);
+  border: 1px solid rgba(var(--RGB-bg), 0.3);
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: rgba(var(--RGB-bg), 0.7);
+  }
+}

@@ -8,13 +8,27 @@ export default class ThemeButton {
 
   constructor({ $target }) {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const $button = createHTMLElement(
-      'button',
-      { type: 'button' },
+    const $button = createHTMLElement('button', {
+      type: 'button',
+      class: 'toggle-theme',
+    });
+
+    const $icon = createHTMLElement(
+      'span',
+      { class: 'material-symbols-outlined' },
+      'dark_mode',
+    );
+    const $text = createHTMLElement(
+      'span',
+      { class: 'a11y-hidden' },
       this.isDarkMode ? '라이트 테마로 변경' : '다크 테마로 변경',
     );
+
+    $button.appendChild($icon);
+    $button.appendChild($text);
     $target.appendChild($button);
-    this.$button = $button;
+    this.$icon = $icon;
+    this.$text = $text;
 
     this.init();
 
@@ -35,9 +49,10 @@ export default class ThemeButton {
   }
 
   toggleButtonLabel() {
-    this.$button.textContent = this.isDarkMode
+    this.$text.textContent = this.isDarkMode
       ? '라이트 테마로 변경'
       : '다크 테마로 변경';
+    this.$icon.textContent = this.isDarkMode ? 'light_mode' : 'dark_mode';
   }
 
   toggle() {

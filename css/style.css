@@ -1,13 +1,80 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "BookkMyungjo-Bd";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+/* reset */
+body,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button {
+  padding: 0;
+  margin: 0;
+}
 
-html{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: inherit;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+input,
+button,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button,
+select {
+  border: 0;
+  background: none;
+}
+
+button:enabled {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
   font-size: 62.5%;
 }
-body{
+
+body {
   font-size: 1.6rem;
   background-color: #f5f5f5;
 }
 
-/* 공통 */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" -25, "opsz" 64;
+}
+
 .a11y-hidden {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
@@ -19,79 +86,276 @@ body{
   position: absolute;
 }
 
-/* 검색결과 */
-.search-result ul{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap:2.4rem;
+.visual {
+  background-color: #f8f3ed;
 }
 
-.search-result ul li{
+.header {
+  margin: 0 2rem;
+  padding: 0 1rem 0 2rem;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(39, 41, 53, 0.2);
+}
+.header .h1 {
+  font-family: "BookkMyungjo-Bd";
+  font-size: 2.4rem;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0.6rem;
+}
+
+.toggle-theme {
+  display: flex;
+  border-radius: 50%;
+  padding: 1rem;
+  transition: all 0.3s;
+}
+.toggle-theme:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.banner {
+  width: 100%;
+  height: clamp(24rem, 40vw, 50rem);
+  overflow: hidden;
+  position: relative;
+}
+.banner ul {
+  display: flex;
+  margin: auto;
+  height: 100%;
+  transition: transform 0.3s;
+}
+.banner ul li {
+  width: 100%;
+  height: 100%;
+}
+.banner ul li .book-article {
+  max-width: 1000px;
+  width: calc(100% - 20rem);
+  margin: auto;
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.banner ul li .book-article img {
+  position: absolute;
+  top: 4rem;
+  right: 0;
+  width: 40%;
+  box-shadow: 2rem 2rem 2rem rgba(0, 0, 0, 0.3);
+}
+.banner ul li .book-article .book-content {
+  width: 50%;
+}
+.banner ul li .book-article .book-content .book-desc {
+  color: #767676;
+  margin-bottom: 1rem;
+}
+.banner ul li .book-article .book-content .book-title {
+  font-family: "BookkMyungjo-Bd";
+  font-size: 4.8rem;
+  line-height: 1;
+}
+.banner ul li .book-article .book-content .btn {
+  background-color: #272935;
+  color: #fff;
+  border-radius: 2rem;
+  height: 3.6rem;
+  padding: 0 2rem;
+  margin-top: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+}
+.banner ul li .book-article .book-content .btn span {
+  font-size: 1em;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prev {
+  left: 2rem;
+}
+
+.next {
+  right: 2rem;
+}
+
+.prev,
+.next {
+  width: 7.2rem;
+  height: 7.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(var(--RGB-bg), 0.5);
+  border: 1px solid rgba(var(--RGB-bg), 0.3);
+  transition: all 0.3s;
+}
+.prev:hover,
+.next:hover {
+  background-color: rgba(var(--RGB-bg), 0.7);
+}
+
+.search {
+  max-width: 1000px;
+  width: calc(100% - 20rem);
+  margin: auto;
+  padding: 2rem 0;
+}
+.search .search-form {
+  display: flex;
+  gap: 1.2rem;
+}
+.search .search-form input,
+.search .search-form select {
+  border: 1px solid #000;
+  border-width: 0 0 1px;
+  height: 4rem;
+  transition: all 0.3s;
+}
+.search .search-form input:focus-visible,
+.search .search-form select:focus-visible {
+  border-color: #daaa63;
+  outline: none;
+  box-shadow: 0 1px #daaa63, inset 0 -1px #daaa63;
+}
+.search .search-form input {
+  width: 40rem;
+  padding: 1rem;
+}
+.search .search-form input::placeholder {
+  color: #767676;
+  font-size: 0.85em;
+}
+.search .search-form select {
+  width: 8rem;
+}
+.search .search-form button {
+  border: 1px solid #000;
+  padding: 0 2rem;
+  border-radius: 1rem;
+}
+
+.keyword {
+  margin-top: 1.6rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8em;
+}
+.keyword h3 {
+  font-weight: bold;
+  padding: 0 1rem;
+  word-break: keep-all;
+  padding-top: 0.4em;
+}
+.keyword ol {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.keyword ol li {
+  padding: 0.3em 1em;
+  border: 1px solid #ddd;
+  border-radius: 0.3em;
+  color: #767676;
+}
+
+/* 검색결과 */
+.search-result {
+  max-width: 1000px;
+  width: calc(100% - 20rem);
+  margin: auto;
+}
+
+.search-result ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 2.4rem;
+}
+
+.search-result ul li {
   background-color: var(--bgColor);
-  padding:2.4rem;
   text-align: center;
 }
-.search-result ul li img{
-  height: 20rem;
-  object-fit: contain;
+
+.search-result ul li button {
+  width: 100%;
 }
 
-
+.search-result ul li img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
 
 /* theme */
-:root{
+:root {
   --bgColor: #fff;
-  --RGB-bg: 255,255,255;
+  --RGB-bg: 255, 255, 255;
   --textColor: #000;
-  --RGB-text: 0,0,0;
-  --dimColor: rgba(0,0,0,0.7);
-}
-.dark{
-  --bgColor: #000;
-  --RGB-bg: 0,0,0;
-  --textColor: #fff;
-  --RGB-text: 255,255,255;
-}
-@media (prefers-color-scheme: dark) {
-  :root{
-    --bgColor: #000;
-    --RGB-bg: 0,0,0;
-    --textColor: #fff;
-    --RGB-text: 255,255,255;
-  }
-  .light{
-    --bgColor: #fff;
-    --RGB-bg: 255,255,255;
-    --textColor: #000;
-    --RGB-text: 0,0,0;
-  }
+  --RGB-text: 0, 0, 0;
+  --dimColor: rgba(0, 0, 0, 0.7);
 }
 
-body{
+.dark {
+  --bgColor: #000;
+  --RGB-bg: 0, 0, 0;
+  --textColor: #fff;
+  --RGB-text: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bgColor: #000;
+    --RGB-bg: 0, 0, 0;
+    --textColor: #fff;
+    --RGB-text: 255, 255, 255;
+  }
+  .light {
+    --bgColor: #fff;
+    --RGB-bg: 255, 255, 255;
+    --textColor: #000;
+    --RGB-text: 0, 0, 0;
+  }
+}
+body {
   background-color: var(--bgColor);
   color: var(--textColor);
 }
 
 /* 모달 */
-.modal-wrapper{
+.modal-wrapper {
   position: fixed;
-  top:0;
+  top: 0;
   left: 0;
-  width:100vw;
+  width: 100vw;
   height: 100vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background-color: var(--dimColor);
   backdrop-filter: blur(8px);
 }
 
-.modal{
+.modal {
   background-color: var(--bgColor);
-  padding:2rem;
-  width:400px;
+  padding: 2rem;
+  width: 400px;
   position: relative;
   z-index: 100;
 }

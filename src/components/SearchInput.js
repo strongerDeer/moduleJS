@@ -4,22 +4,31 @@ import SortingCounter from './SortingCounter.js';
 
 export default class SearchInput {
   constructor({ $target, onSearch }) {
-    const $header = createHTMLElement('header', { class: 'header' });
-    const $h1 = createHTMLElement('h1', null, 'search book');
+    const $wrapper = createHTMLElement('div', { class: 'search' });
+    const $h2 = createHTMLElement('h2', { class: 'a11y-hidden' }, '도서 검색');
 
-    const $div = createHTMLElement('div', { class: 'form-group' });
     const $form = createHTMLElement('form', { class: 'search-form' });
+    const $searchLabel = createHTMLElement(
+      'label',
+      { class: 'a11y-hidden' },
+      '검색',
+    );
     const $searchInput = createHTMLElement('input', {
       type: 'search',
       placeholder: '책 이름을 입력하세요',
     });
-    const $button = createHTMLElement('button', { type: 'submit' }, '검색');
+    const $searchButton = createHTMLElement(
+      'button',
+      { type: 'submit' },
+      '검색',
+    );
+
+    $form.appendChild($searchLabel);
     $form.appendChild($searchInput);
-    $form.appendChild($button);
-    $header.appendChild($h1);
-    $div.appendChild($form);
-    $header.appendChild($div);
-    $target.appendChild($header);
+
+    $wrapper.appendChild($h2);
+    $wrapper.appendChild($form);
+    $target.appendChild($wrapper);
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -40,14 +49,16 @@ export default class SearchInput {
       }
     };
     this.KeywordHistory = new KeywordHistory({
-      $target: $header,
+      $target: $wrapper,
       onSearch,
     });
     this.SortingCounter = new SortingCounter({
-      $target: $div,
+      $target: $form,
       onSearch,
       keyword: this.KeywordHistory.getLastKeyword(),
     });
+
+    $form.appendChild($searchButton);
 
     $form.addEventListener('submit', handleSubmit);
   }

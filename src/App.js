@@ -1,8 +1,7 @@
-import Banner from './components/Banner.js';
 import BookInfo from './components/BookInfo.js';
 import SearchInput from './components/SearchInput.js';
 import SearchResult from './components/SearchResult.js';
-import ThemeButton from './components/ThemeButton.js';
+import Visual from './components/Visual.js';
 import api from './js/api.js';
 
 class App {
@@ -12,13 +11,8 @@ class App {
   constructor($target) {
     this.$target = $target;
 
-    // 배너
-    this.Banner = new Banner({
-      $target,
-    });
-
-    // 테마 적용
-    new ThemeButton({
+    // header+banner
+    this.Visual = new Visual({
       $target,
     });
 

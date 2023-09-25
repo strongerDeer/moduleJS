@@ -1,0 +1,82 @@
+/* 검색결과 */
+.search-result {
+  @include max-width;
+}
+.search-result ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 2.4rem;
+}
+
+.search-result ul li {
+  background-color: var(--bgColor);
+
+  text-align: center;
+}
+.search-result ul li button {
+  width: 100%;
+}
+.search-result ul li img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+/* theme */
+:root {
+  --bgColor: #fff;
+  --RGB-bg: 255, 255, 255;
+  --textColor: #000;
+  --RGB-text: 0, 0, 0;
+  --dimColor: rgba(0, 0, 0, 0.7);
+}
+.dark {
+  --bgColor: #000;
+  --RGB-bg: 0, 0, 0;
+  --textColor: #fff;
+  --RGB-text: 255, 255, 255;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bgColor: #000;
+    --RGB-bg: 0, 0, 0;
+    --textColor: #fff;
+    --RGB-text: 255, 255, 255;
+  }
+  .light {
+    --bgColor: #fff;
+    --RGB-bg: 255, 255, 255;
+    --textColor: #000;
+    --RGB-text: 0, 0, 0;
+  }
+}
+
+body {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
+
+/* 모달 */
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--dimColor);
+  backdrop-filter: blur(8px);
+}
+
+.modal {
+  background-color: var(--bgColor);
+  padding: 2rem;
+  width: 400px;
+  position: relative;
+  z-index: 100;
+}
