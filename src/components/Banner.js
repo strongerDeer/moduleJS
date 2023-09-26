@@ -49,7 +49,7 @@ export default class Banner {
       const $link = createHTMLElement(
         'a',
         { class: 'btn', href: data.link },
-        'view',
+        'View',
       );
 
       const $icon = createHTMLElement(
