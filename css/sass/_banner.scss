@@ -1,6 +1,6 @@
 .banner {
   width: 100%;
-  height: clamp(24rem, 40vw, 50rem);
+  height: clamp(38rem, 40vw, 50rem);
   overflow: hidden;
   position: relative;
 
@@ -15,9 +15,7 @@
       height: 100%;
 
       .book-article {
-        max-width: 1000px;
-        width: calc(100% - 20rem);
-        margin: auto;
+        @include max-width;
         position: relative;
         height: 100%;
 
@@ -35,18 +33,27 @@
 
         .book-content {
           width: 50%;
+          word-break: keep-all;
           .book-desc {
-            color: #767676;
+            @include get-color(color, gray);
             margin-bottom: 1rem;
           }
           .book-title {
             font-family: 'BookkMyungjo-Bd';
-            font-size: 4.8rem;
+            font-size: 3em;
+            @media (max-width: 640px) {
+              font-size: 2.6em;
+            }
             line-height: 1;
           }
           .btn {
-            background-color: #272935;
-            color: #fff;
+            @include get-color(background-color, text, 0.9);
+            @include get-color(color, bg);
+
+            transition: all 0.3s;
+            &:hover {
+              @include get-color(background-color, text, 1);
+            }
             border-radius: 2rem;
             height: 3.6rem;
             padding: 0 2rem;
@@ -54,11 +61,31 @@
             display: inline-flex;
             align-items: center;
             gap: 2rem;
+
             span {
               font-size: 1em;
             }
           }
         }
+      }
+    }
+  }
+}
+@media (max-width: 640px) {
+  .banner ul li {
+    .book-article {
+      justify-content: center;
+      img {
+        top: auto;
+        bottom: 0;
+        left: 50%;
+        right: auto;
+        width: 55%;
+        transform: translate(-50%, 35%);
+      }
+      .book-content {
+        width: 90%;
+        transform: translateY(-50%);
       }
     }
   }
@@ -72,25 +99,37 @@
 }
 
 .prev {
-  left: 2rem;
+  left: 2em;
 }
 .next {
-  right: 2rem;
+  right: 2em;
 }
 
 .prev,
 .next {
-  width: 7.2rem;
-  height: 7.2rem;
+  width: 4em;
+  height: 4em;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(var(--RGB-bg), 0.5);
-  border: 1px solid rgba(var(--RGB-bg), 0.3);
+  @include get-color(background-color, bg, 0.2);
+  border-width: 1px;
+  border-style: solid;
+  @include get-color(border-color, text, 0.1);
+  @include get-color(color, text);
+
   transition: all 0.3s;
 
   &:hover {
-    background-color: rgba(var(--RGB-bg), 0.7);
+    @include get-color(background-color, bg, 0.7);
+    @include get-color(border-color, text);
+  }
+}
+
+@media (max-width: 640px) {
+  .prev,
+  .next {
+    top: 75%;
   }
 }

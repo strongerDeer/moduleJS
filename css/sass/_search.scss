@@ -8,24 +8,26 @@
 
     input,
     select {
-      border: 1px solid #000;
-      border-width: 0 0 1px;
-
       height: 4rem;
+      border-width: 0 0 1px;
+      border-style: solid;
+      @include get-color(border-color, text);
+
       transition: all 0.3s;
 
       &:focus-visible {
-        border-color: #daaa63;
+        @include get-color(border-color, point);
         outline: none;
-        box-shadow: 0 1px #daaa63, inset 0 -1px #daaa63;
       }
     }
     input {
       width: 40rem;
       padding: 1rem;
+      background: none;
+      appearance: none;
 
       &::placeholder {
-        color: #767676;
+        @include get-color(color, gray);
         font-size: 0.85em;
       }
     }
@@ -33,7 +35,11 @@
       width: 8rem;
     }
     button {
-      border: 1px solid #000;
+      border-width: 1px;
+      border-style: solid;
+      @include get-color(border-color, text, 0.2);
+      @include get-color(background-color, text, 0.2);
+
       padding: 0 2rem;
       border-radius: 1rem;
     }

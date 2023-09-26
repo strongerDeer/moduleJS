@@ -44,6 +44,11 @@ select {
   color: inherit;
 }
 
+input {
+  border: 0;
+  border-radius: 0;
+}
+
 button,
 select {
   border: 0;
@@ -67,7 +72,7 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: clamp(14px, 1.6vw, 16px);
   background-color: #f5f5f5;
 }
 
@@ -84,223 +89,6 @@ body {
   overflow: hidden;
   padding: 0;
   position: absolute;
-}
-
-.visual {
-  background-color: #f8f3ed;
-}
-
-.header {
-  margin: 0 2rem;
-  padding: 0 1rem 0 2rem;
-  height: 6rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(39, 41, 53, 0.2);
-}
-.header .h1 {
-  font-family: "BookkMyungjo-Bd";
-  font-size: 2.4rem;
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 0.6rem;
-}
-
-.toggle-theme {
-  display: flex;
-  border-radius: 50%;
-  padding: 1rem;
-  transition: all 0.3s;
-}
-.toggle-theme:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.banner {
-  width: 100%;
-  height: clamp(24rem, 40vw, 50rem);
-  overflow: hidden;
-  position: relative;
-}
-.banner ul {
-  display: flex;
-  margin: auto;
-  height: 100%;
-  transition: transform 0.3s;
-}
-.banner ul li {
-  width: 100%;
-  height: 100%;
-}
-.banner ul li .book-article {
-  max-width: 1000px;
-  width: calc(100% - 20rem);
-  margin: auto;
-  position: relative;
-  height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-}
-.banner ul li .book-article img {
-  position: absolute;
-  top: 4rem;
-  right: 0;
-  width: 40%;
-  box-shadow: 2rem 2rem 2rem rgba(0, 0, 0, 0.3);
-}
-.banner ul li .book-article .book-content {
-  width: 50%;
-}
-.banner ul li .book-article .book-content .book-desc {
-  color: #767676;
-  margin-bottom: 1rem;
-}
-.banner ul li .book-article .book-content .book-title {
-  font-family: "BookkMyungjo-Bd";
-  font-size: 4.8rem;
-  line-height: 1;
-}
-.banner ul li .book-article .book-content .btn {
-  background-color: #272935;
-  color: #fff;
-  border-radius: 2rem;
-  height: 3.6rem;
-  padding: 0 2rem;
-  margin-top: 2rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 2rem;
-}
-.banner ul li .book-article .book-content .btn span {
-  font-size: 1em;
-}
-
-.prev,
-.next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.prev {
-  left: 2rem;
-}
-
-.next {
-  right: 2rem;
-}
-
-.prev,
-.next {
-  width: 7.2rem;
-  height: 7.2rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(var(--RGB-bg), 0.5);
-  border: 1px solid rgba(var(--RGB-bg), 0.3);
-  transition: all 0.3s;
-}
-.prev:hover,
-.next:hover {
-  background-color: rgba(var(--RGB-bg), 0.7);
-}
-
-.search {
-  max-width: 1000px;
-  width: calc(100% - 20rem);
-  margin: auto;
-  padding: 2rem 0;
-}
-.search .search-form {
-  display: flex;
-  gap: 1.2rem;
-}
-.search .search-form input,
-.search .search-form select {
-  border: 1px solid #000;
-  border-width: 0 0 1px;
-  height: 4rem;
-  transition: all 0.3s;
-}
-.search .search-form input:focus-visible,
-.search .search-form select:focus-visible {
-  border-color: #daaa63;
-  outline: none;
-  box-shadow: 0 1px #daaa63, inset 0 -1px #daaa63;
-}
-.search .search-form input {
-  width: 40rem;
-  padding: 1rem;
-}
-.search .search-form input::placeholder {
-  color: #767676;
-  font-size: 0.85em;
-}
-.search .search-form select {
-  width: 8rem;
-}
-.search .search-form button {
-  border: 1px solid #000;
-  padding: 0 2rem;
-  border-radius: 1rem;
-}
-
-.keyword {
-  margin-top: 1.6rem;
-  display: flex;
-  gap: 1rem;
-  font-size: 0.8em;
-}
-.keyword h3 {
-  font-weight: bold;
-  padding: 0 1rem;
-  word-break: keep-all;
-  padding-top: 0.4em;
-}
-.keyword ol {
-  flex-grow: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.keyword ol li {
-  padding: 0.3em 1em;
-  border: 1px solid #ddd;
-  border-radius: 0.3em;
-  color: #767676;
-}
-
-/* 검색결과 */
-.search-result {
-  max-width: 1000px;
-  width: calc(100% - 20rem);
-  margin: auto;
-}
-
-.search-result ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  gap: 2.4rem;
-}
-
-.search-result ul li {
-  background-color: var(--bgColor);
-  text-align: center;
-}
-
-.search-result ul li button {
-  width: 100%;
-}
-
-.search-result ul li img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: contain;
-  margin-bottom: 1rem;
 }
 
 /* theme */
@@ -336,6 +124,373 @@ body {
 body {
   background-color: var(--bgColor);
   color: var(--textColor);
+}
+
+.visual {
+  background-color: #f8f3ed;
+}
+.dark .visual {
+  background-color: #484c61;
+}
+
+.header {
+  margin: 0 1em;
+  padding: 0 0.5em 0 1em;
+  height: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: rgba(39, 41, 53, 0.1);
+}
+.dark .header {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.header .h1 {
+  font-family: "BookkMyungjo-Bd";
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0.6rem;
+}
+
+.toggle-theme {
+  display: flex;
+  border-radius: 50%;
+  padding: 1rem;
+  transition: all 0.3s;
+}
+.toggle-theme:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.dark .toggle-theme:hover {
+  background-color: rgba(39, 41, 53, 0.5);
+}
+
+.banner {
+  width: 100%;
+  height: clamp(38rem, 40vw, 50rem);
+  overflow: hidden;
+  position: relative;
+}
+.banner ul {
+  display: flex;
+  margin: auto;
+  height: 100%;
+  transition: transform 0.3s;
+}
+.banner ul li {
+  width: 100%;
+  height: 100%;
+}
+.banner ul li .book-article {
+  max-width: 1000px;
+  width: calc(100% - 4em);
+  margin: auto;
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.banner ul li .book-article img {
+  position: absolute;
+  top: 4rem;
+  right: 0;
+  width: 40%;
+  box-shadow: 2rem 2rem 2rem rgba(0, 0, 0, 0.3);
+}
+.banner ul li .book-article .book-content {
+  width: 50%;
+  word-break: keep-all;
+}
+.banner ul li .book-article .book-content .book-desc {
+  color: #767676;
+  margin-bottom: 1rem;
+}
+.dark .banner ul li .book-article .book-content .book-desc {
+  color: #dddddd;
+}
+
+.banner ul li .book-article .book-content .book-title {
+  font-family: "BookkMyungjo-Bd";
+  font-size: 3em;
+  line-height: 1;
+}
+@media (max-width: 640px) {
+  .banner ul li .book-article .book-content .book-title {
+    font-size: 2.6em;
+  }
+}
+.banner ul li .book-article .book-content .btn {
+  background-color: rgba(39, 41, 53, 0.9);
+  color: white;
+  transition: all 0.3s;
+  border-radius: 2rem;
+  height: 3.6rem;
+  padding: 0 2rem;
+  margin-top: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+}
+.dark .banner ul li .book-article .book-content .btn {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.dark .banner ul li .book-article .book-content .btn {
+  color: #272935;
+}
+
+.banner ul li .book-article .book-content .btn:hover {
+  background-color: #272935;
+}
+.dark .banner ul li .book-article .book-content .btn:hover {
+  background-color: white;
+}
+
+.banner ul li .book-article .book-content .btn span {
+  font-size: 1em;
+}
+
+@media (max-width: 640px) {
+  .banner ul li .book-article {
+    justify-content: center;
+  }
+  .banner ul li .book-article img {
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    width: 55%;
+    transform: translate(-50%, 35%);
+  }
+  .banner ul li .book-article .book-content {
+    width: 90%;
+    transform: translateY(-50%);
+  }
+}
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prev {
+  left: 2em;
+}
+
+.next {
+  right: 2em;
+}
+
+.prev,
+.next {
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(39, 41, 53, 0.1);
+  color: #272935;
+  transition: all 0.3s;
+}
+.dark .prev,
+.dark .next {
+  background-color: rgba(39, 41, 53, 0.2);
+}
+
+.dark .prev,
+.dark .next {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .prev,
+.dark .next {
+  color: white;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-color: #272935;
+}
+.dark .prev:hover,
+.dark .next:hover {
+  background-color: rgba(39, 41, 53, 0.7);
+}
+
+.dark .prev:hover,
+.dark .next:hover {
+  border-color: white;
+}
+
+@media (max-width: 640px) {
+  .prev,
+  .next {
+    top: 75%;
+  }
+}
+.search {
+  max-width: 1000px;
+  width: calc(100% - 4em);
+  margin: auto;
+  padding: 2rem 0;
+}
+.search .search-form {
+  display: flex;
+  gap: 1.2rem;
+}
+.search .search-form input,
+.search .search-form select {
+  height: 4rem;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: #272935;
+  transition: all 0.3s;
+}
+.dark .search .search-form input,
+.dark .search .search-form select {
+  border-color: white;
+}
+
+.search .search-form input:focus-visible,
+.search .search-form select:focus-visible {
+  border-color: royalblue;
+  outline: none;
+}
+.dark .search .search-form input:focus-visible,
+.dark .search .search-form select:focus-visible {
+  border-color: royalblue;
+}
+
+.search .search-form input {
+  width: 40rem;
+  padding: 1rem;
+  background: none;
+  appearance: none;
+}
+.search .search-form input::placeholder {
+  color: #767676;
+  font-size: 0.85em;
+}
+.dark .search .search-form input::placeholder {
+  color: #dddddd;
+}
+
+.search .search-form select {
+  width: 8rem;
+}
+.search .search-form button {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(39, 41, 53, 0.2);
+  background-color: rgba(39, 41, 53, 0.2);
+  padding: 0 2rem;
+  border-radius: 1rem;
+}
+.dark .search .search-form button {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark .search .search-form button {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.keyword {
+  margin-top: 1.6rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8em;
+}
+.keyword h3 {
+  font-weight: bold;
+  padding: 0 1rem;
+  word-break: keep-all;
+  padding-top: 0.4em;
+}
+.keyword ol {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.keyword ol li {
+  padding: 0.3em 1em;
+  border: 1px solid #ddd;
+  border-radius: 0.3em;
+  color: #767676;
+}
+
+/* 검색결과 */
+.search-result {
+  max-width: 1000px;
+  width: calc(100% - 4em);
+  margin: auto;
+  padding: 4rem 0 8rem 0;
+}
+
+.search-result ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 6rem 4.8rem;
+}
+
+.search-result ul li {
+  background-color: var(--bgColor);
+  text-align: center;
+}
+
+.search-result ul li button {
+  width: 100%;
+  text-align: left;
+  line-height: 1.4;
+}
+.search-result ul li button p {
+  padding: 0 0.4rem;
+}
+.search-result ul li button .book-title {
+  font-weight: bold;
+  word-break: break-all;
+  margin: 1rem 0 0.5rem 0;
+}
+.search-result ul li button .book-title,
+.search-result ul li button .book-authors {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.search-result ul li button .book-contents {
+  font-size: 0.9em;
+  color: #444;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.search-result ul li button .book-authors {
+  margin: 0.5rem 0;
+}
+.search-result ul li button .book-authors,
+.search-result ul li button .book-publisher {
+  color: #767676;
+  font-size: 0.9em;
+}
+
+.search-result ul li img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 /* 모달 */
