@@ -3,20 +3,37 @@ import createHTMLElement from '../js/createHTMLElement.js';
 export default class Banner {
   data = [
     {
-      title: '기획자의 일',
-      desc: '아이디어, 실행, 성과까지 일의 흥망성쇠를 좌우하는',
+      title: '어린 왕자, 영원이 된 순간',
+      desc: '인간에 대한 희망으로 창조한 생텍쥐페리의 세계',
       link: '#',
-      src: '../img/book1.jpg',
+      publisher: '위즈덤하우스',
+      author: '앙투안 드 생텍쥐페리',
+      src: '../img/book01.jpg',
+    },
+    {
+      title: '마이크로카피 2/e',
+      desc: 'UX 디자이너의 글쓰기',
+      link: '#',
+      publisher: '에이콘출판',
+      author: '킨너렛 이프라',
+      src: '../img/book02.jpg',
+    },
+    {
+      title: '프론트엔드 성능 최적화 가이드',
+      desc: '웹 개발 스킬을 한 단계 높여 주는',
+      link: '#',
+      publisher: '프로그래밍 인사이트',
+      author: '유동균',
+      src: '../img/book03.jpg',
     },
     {
       title: '기획자의 일',
       desc: '아이디어, 실행, 성과까지 일의 흥망성쇠를 좌우하는',
       link: '#',
-      src: '../img/img2.jpg',
+      publisher: '비즈니스북스',
+      author: '양은우',
+      src: '../img/book04.jpg',
     },
-    { title: '기획자의 일', desc: '책설명', link: '#', src: '../img/img3.jpg' },
-    { title: '기획자의 일', desc: '책설명', link: '#', src: '../img/img4.jpg' },
-    { title: '기획자의 일', desc: '책설명', link: '#', src: '../img/img5.jpg' },
   ];
   current = 0;
   constructor({ $target }) {
