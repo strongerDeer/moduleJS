@@ -34,6 +34,7 @@
         .book-content {
           width: 50%;
           word-break: keep-all;
+          z-index: 100;
           .book-desc {
             @include get-color(color, gray);
             margin-bottom: 1rem;
@@ -41,10 +42,13 @@
           .book-title {
             font-family: 'BookkMyungjo-Bd';
             font-size: 3em;
+            letter-spacing: -2px;
+            width: 7em;
+            line-height: 1.2;
             @media (max-width: 640px) {
-              font-size: 2.6em;
+              font-size: 2.2em;
+              width: auto;
             }
-            line-height: 1;
           }
           .btn {
             @include get-color(background-color, text, 0.9);
@@ -74,20 +78,28 @@
 @media (max-width: 640px) {
   .banner ul li {
     .book-article {
-      justify-content: center;
+      align-items: flex-start;
       img {
         top: auto;
-        bottom: 0;
+        top: 18rem;
         left: 50%;
         right: auto;
         width: 55%;
-        transform: translate(-50%, 35%);
+        transform: translate(-50%, 0);
       }
       .book-content {
-        width: 90%;
-        transform: translateY(-50%);
+        width: 100%;
+        margin: 4.2em auto 0;
       }
     }
+  }
+
+  .btn {
+    position: absolute;
+    bottom: 2em;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
   }
 }
 

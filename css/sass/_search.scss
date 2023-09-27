@@ -4,6 +4,7 @@
   padding: 2rem 0;
   .search-form {
     display: flex;
+    flex-wrap: wrap;
     gap: 1.2rem;
 
     input,
@@ -21,7 +22,8 @@
       }
     }
     input {
-      width: 40rem;
+      flex-grow: 1;
+      flex-shrink: 10;
       padding: 1rem;
       background: none;
       appearance: none;

@@ -205,6 +205,7 @@ body {
 .banner ul li .book-article .book-content {
   width: 50%;
   word-break: keep-all;
+  z-index: 100;
 }
 .banner ul li .book-article .book-content .book-desc {
   color: #767676;
@@ -217,11 +218,14 @@ body {
 .banner ul li .book-article .book-content .book-title {
   font-family: "BookkMyungjo-Bd";
   font-size: 3em;
-  line-height: 1;
+  letter-spacing: -2px;
+  width: 7em;
+  line-height: 1.2;
 }
 @media (max-width: 640px) {
   .banner ul li .book-article .book-content .book-title {
-    font-size: 2.6em;
+    font-size: 2.2em;
+    width: auto;
   }
 }
 .banner ul li .book-article .book-content .btn {
@@ -257,19 +261,26 @@ body {
 
 @media (max-width: 640px) {
   .banner ul li .book-article {
-    justify-content: center;
+    align-items: flex-start;
   }
   .banner ul li .book-article img {
     top: auto;
-    bottom: 0;
+    top: 18rem;
     left: 50%;
     right: auto;
     width: 55%;
-    transform: translate(-50%, 35%);
+    transform: translate(-50%, 0);
   }
   .banner ul li .book-article .book-content {
-    width: 90%;
-    transform: translateY(-50%);
+    width: 100%;
+    margin: 4.2em auto 0;
+  }
+  .btn {
+    position: absolute;
+    bottom: 2em;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
   }
 }
 .prev,
@@ -346,6 +357,7 @@ body {
 }
 .search .search-form {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.2rem;
 }
 .search .search-form input,
@@ -372,7 +384,8 @@ body {
 }
 
 .search .search-form input {
-  width: 40rem;
+  flex-grow: 1;
+  flex-shrink: 10;
   padding: 1rem;
   background: none;
   appearance: none;
@@ -436,11 +449,33 @@ body {
   margin: auto;
   padding: 4rem 0 8rem 0;
 }
+.search-result h2 {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+.search-result h2 strong::before {
+  content: "";
+  display: inline-block;
+  width: 3rem;
+  height: 1px;
+  background-color: #272935;
+  vertical-align: middle;
+  margin: 0 1rem;
+}
+.dark .search-result h2 strong::before {
+  background-color: white;
+}
 
 .search-result ul {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   gap: 6rem 4.8rem;
+}
+@media screen and (max-width: 500px) {
+  .search-result ul {
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: 4rem 2.4rem;
+  }
 }
 
 .search-result ul li {
