@@ -1,4 +1,5 @@
 import createHTMLElement from '../js/createHTMLElement.js';
+import uniqueArray from '../utils/uniqueArray.js';
 
 // 최근 키워드 개수
 const KEYWORD_NUM = 5;
@@ -28,7 +29,7 @@ export default class KeywordHistory {
     keywordHistory.unshift(keyword);
 
     // 중복제거
-    keywordHistory = Array.from(new Set(keywordHistory));
+    keywordHistory = uniqueArray(keywordHistory);
     // 최대 키워드 수
     keywordHistory = keywordHistory.slice(0, KEYWORD_NUM);
     // 로컬저장

@@ -25,8 +25,6 @@ export default class SortingCounter {
 
     $select.addEventListener('change', (e) => {
       localStorage.setItem('sorting', $select.value);
-
-      this.onSearch(keyword, $select.value);
       this.init();
     });
   }
