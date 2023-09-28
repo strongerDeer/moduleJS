@@ -91,39 +91,27 @@ body {
   position: absolute;
 }
 
-/* theme */
-:root {
-  --bgColor: #fff;
-  --RGB-bg: 255, 255, 255;
-  --textColor: #000;
-  --RGB-text: 0, 0, 0;
-  --dimColor: rgba(0, 0, 0, 0.7);
-}
-
-.dark {
-  --bgColor: #000;
-  --RGB-bg: 0, 0, 0;
-  --textColor: #fff;
-  --RGB-text: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bgColor: #000;
-    --RGB-bg: 0, 0, 0;
-    --textColor: #fff;
-    --RGB-text: 255, 255, 255;
-  }
-  .light {
-    --bgColor: #fff;
-    --RGB-bg: 255, 255, 255;
-    --textColor: #000;
-    --RGB-text: 0, 0, 0;
-  }
-}
 body {
-  background-color: var(--bgColor);
-  color: var(--textColor);
+  background-color: white;
+  color: #272935;
+}
+.dark body {
+  background-color: #272935;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  body {
+    background-color: #272935;
+  }
+}
+.dark body {
+  color: white;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  body {
+    color: white;
+  }
 }
 
 .visual {
@@ -131,6 +119,12 @@ body {
 }
 .dark .visual {
   background-color: #484c61;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .visual {
+    background-color: #484c61;
+  }
 }
 
 .header {
@@ -148,6 +142,11 @@ body {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .header {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
 .header .h1 {
   font-family: "BookkMyungjo-Bd";
   font-size: 1.5em;
@@ -167,6 +166,12 @@ body {
 }
 .dark .toggle-theme:hover {
   background-color: rgba(39, 41, 53, 0.5);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .toggle-theme:hover {
+    background-color: rgba(39, 41, 53, 0.5);
+  }
 }
 
 .banner {
@@ -215,6 +220,11 @@ body {
   color: #dddddd;
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .banner ul li .book-article .book-content .book-desc {
+    color: #dddddd;
+  }
+}
 .banner ul li .book-article .book-content .book-title {
   font-family: "BookkMyungjo-Bd";
   font-size: 3em;
@@ -244,10 +254,20 @@ body {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .banner ul li .book-article .book-content .btn {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+}
 .dark .banner ul li .book-article .book-content .btn {
   color: #272935;
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .banner ul li .book-article .book-content .btn {
+    color: #272935;
+  }
+}
 .banner ul li .book-article .book-content .btn:hover {
   background-color: #272935;
 }
@@ -255,6 +275,11 @@ body {
   background-color: white;
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .banner ul li .book-article .book-content .btn:hover {
+    background-color: white;
+  }
+}
 .banner ul li .book-article .book-content .btn span {
   font-size: 1em;
 }
@@ -318,16 +343,34 @@ body {
   background-color: rgba(39, 41, 53, 0.2);
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .prev,
+  .next {
+    background-color: rgba(39, 41, 53, 0.2);
+  }
+}
 .dark .prev,
 .dark .next {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .prev,
+  .next {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
 .dark .prev,
 .dark .next {
   color: white;
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .prev,
+  .next {
+    color: white;
+  }
+}
 .prev:hover,
 .next:hover {
   background-color: rgba(255, 255, 255, 0.7);
@@ -338,9 +381,22 @@ body {
   background-color: rgba(39, 41, 53, 0.7);
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(39, 41, 53, 0.7);
+  }
+}
 .dark .prev:hover,
 .dark .next:hover {
   border-color: white;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .prev:hover,
+  .next:hover {
+    border-color: white;
+  }
 }
 
 @media (max-width: 640px) {
@@ -373,6 +429,12 @@ body {
   border-color: white;
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .search .search-form input,
+  .search .search-form select {
+    border-color: white;
+  }
+}
 .search .search-form input:focus-visible,
 .search .search-form select:focus-visible {
   border-color: royalblue;
@@ -383,6 +445,12 @@ body {
   border-color: royalblue;
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .search .search-form input:focus-visible,
+  .search .search-form select:focus-visible {
+    border-color: royalblue;
+  }
+}
 .search .search-form input {
   flex-grow: 1;
   flex-shrink: 10;
@@ -398,6 +466,11 @@ body {
   color: #dddddd;
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .search .search-form input::placeholder {
+    color: #dddddd;
+  }
+}
 .search .search-form select {
   width: 8rem;
 }
@@ -413,8 +486,19 @@ body {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .search .search-form button {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
 .dark .search .search-form button {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .search .search-form button {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 }
 
 .keyword {
@@ -464,6 +548,12 @@ body {
 }
 .dark .search-result h2 strong::before {
   background-color: white;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .search-result h2 strong::before {
+    background-color: white;
+  }
 }
 
 .search-result ul {

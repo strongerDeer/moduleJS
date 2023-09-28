@@ -28,7 +28,11 @@ $colors: (
 
 @mixin get-color($property, $color, $opacity: 1) {
   #{$property}: rgba(get-color($color), $opacity);
+
   @at-root .dark & {
+    #{$property}: rgba(get-color($color, dark), $opacity);
+  }
+  @media screen and (prefers-color-scheme: dark) {
     #{$property}: rgba(get-color($color, dark), $opacity);
   }
 }

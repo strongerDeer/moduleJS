@@ -98,36 +98,7 @@ body {
   margin: auto;
 }
 
-/* theme */
-:root {
-  --bgColor: #fff;
-  --RGB-bg: 255, 255, 255;
-  --textColor: #000;
-  --RGB-text: 0, 0, 0;
-  --dimColor: rgba(0, 0, 0, 0.7);
-}
-.dark {
-  --bgColor: #000;
-  --RGB-bg: 0, 0, 0;
-  --textColor: #fff;
-  --RGB-text: 255, 255, 255;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bgColor: #000;
-    --RGB-bg: 0, 0, 0;
-    --textColor: #fff;
-    --RGB-text: 255, 255, 255;
-  }
-  .light {
-    --bgColor: #fff;
-    --RGB-bg: 255, 255, 255;
-    --textColor: #000;
-    --RGB-text: 0, 0, 0;
-  }
-}
-
 body {
-  background-color: var(--bgColor);
-  color: var(--textColor);
+  @include get-color(background-color, bg);
+  @include get-color(color, text);
 }

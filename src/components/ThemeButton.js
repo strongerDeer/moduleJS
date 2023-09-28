@@ -56,13 +56,13 @@ export default class ThemeButton {
   }
 
   toggle() {
-    const $body = document.querySelector('body');
+    const $html = document.querySelector('html');
 
     if (this.isDarkMode) {
-      $body.setAttribute('class', DARK_THEME);
+      $html.setAttribute('class', DARK_THEME);
       localStorage.setItem('theme', DARK_THEME);
     } else {
-      $body.setAttribute('class', LIGHT_THEME);
+      $html.setAttribute('class', LIGHT_THEME);
       localStorage.setItem('theme', LIGHT_THEME);
     }
 
