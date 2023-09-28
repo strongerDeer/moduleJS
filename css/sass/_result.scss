@@ -54,7 +54,7 @@
   }
   .book-contents {
     font-size: 0.9em;
-    color: #444;
+    @include get-color(color, text);
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -65,7 +65,7 @@
   }
   .book-authors,
   .book-publisher {
-    color: #767676;
+    @include get-color(color, gray);
     font-size: 0.9em;
   }
 }
@@ -75,9 +75,14 @@
   aspect-ratio: 3/4;
   object-fit: cover;
 
-  border: 2px solid #fff;
+  border: 2px solid;
+  @include get-color(border-color, bg);
   box-sizing: border-box;
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+  .dark & {
+    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  }
 }
 
 /* 모달 */
