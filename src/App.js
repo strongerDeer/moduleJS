@@ -1,4 +1,5 @@
 import BookInfo from './components/BookInfo.js';
+import Loading from './components/Loading.js';
 import SearchInput from './components/SearchInput.js';
 import SearchResult from './components/SearchResult.js';
 import Visual from './components/Visual.js';
@@ -6,10 +7,19 @@ import api from './js/api.js';
 
 class App {
   $target = null;
-  data = [];
+  DEFAULT_PAGE = 1;
+  data = {
+    items: [],
+    page: this.DEFAULT_PAGE,
+  };
 
   constructor($target) {
     this.$target = $target;
+
+    // loading
+    this.Loading = new Loading({
+      $target,
+    });
 
     // header+banner
     this.Visual = new Visual({
@@ -20,23 +30,35 @@ class App {
     new SearchInput({
       $target,
       onSearch: async (keyword, limit) => {
+        this.Loading.show();
+
         const res = await api.fetchBooks(keyword, limit);
         const bookData = res.documents;
-        this.setState(bookData);
-        this.saveResult(bookData);
+
+        setTimeout(() => {
+          this.setState({
+            items: bookData,
+            page: this.DEFAULT_PAGE,
+          });
+          this.Loading.hide();
+          this.saveResult(bookData);
+        }, 300);
       },
     });
 
     // 검색결과
     this.SearchResult = new SearchResult({
       $target,
-      initialData: this.data,
+      initialData: this.data.items,
       onClick: (book) => {
         this.BookInfo.showModal({
           visible: true,
           book,
         });
       },
+
+      // 무한스크롤
+      onNextPage: () => {},
     });
 
     // 책정보
@@ -50,7 +72,7 @@ class App {
   //상태
   setState(nextData) {
     this.data = nextData;
-    this.SearchResult.setState(nextData);
+    this.SearchResult.setState(nextData.items);
   }
 
   saveResult(result) {
@@ -63,7 +85,10 @@ class App {
     const lastResult =
       savedlastResult === null ? [] : JSON.parse(savedlastResult);
 
-    this.setState(lastResult);
+    this.setState({
+      items: lastResult,
+      page: this.DEFAULT_PAGE,
+    });
   }
 }
 

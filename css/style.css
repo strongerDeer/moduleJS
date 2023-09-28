@@ -521,9 +521,28 @@ body {
 }
 .keyword ol li {
   padding: 0.3em 1em;
-  border: 1px solid #ddd;
   border-radius: 0.3em;
   color: #767676;
+  border: 1px solid;
+  border-color: rgba(118, 118, 118, 0.4);
+}
+.dark .keyword ol li {
+  color: #dddddd;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .keyword ol li {
+    color: #dddddd;
+  }
+}
+.dark .keyword ol li {
+  border-color: rgba(221, 221, 221, 0.4);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .keyword ol li {
+    border-color: rgba(221, 221, 221, 0.4);
+  }
 }
 
 /* 검색결과 */
@@ -594,11 +613,20 @@ body {
 }
 .search-result ul li button .book-contents {
   font-size: 0.9em;
-  color: #444;
+  color: #272935;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+.dark .search-result ul li button .book-contents {
+  color: white;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .search-result ul li button .book-contents {
+    color: white;
+  }
 }
 .search-result ul li button .book-authors {
   margin: 0.5rem 0;
@@ -608,14 +636,38 @@ body {
   color: #767676;
   font-size: 0.9em;
 }
+.dark .search-result ul li button .book-authors,
+.dark .search-result ul li button .book-publisher {
+  color: #dddddd;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .search-result ul li button .book-authors,
+  .search-result ul li button .book-publisher {
+    color: #dddddd;
+  }
+}
 
 .search-result ul li img {
   width: 100%;
   aspect-ratio: 3/4;
   object-fit: cover;
-  border: 2px solid #fff;
+  border: 2px solid;
+  border-color: white;
   box-sizing: border-box;
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+.dark .search-result ul li img {
+  border-color: #272935;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .search-result ul li img {
+    border-color: #272935;
+  }
+}
+.dark .search-result ul li img {
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.3);
 }
 
 /* 모달 */
@@ -638,4 +690,32 @@ body {
   width: 400px;
   position: relative;
   z-index: 100;
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 100;
+  color: white;
+}
+.dark .loading {
+  color: #272935;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .loading {
+    color: #272935;
+  }
+}
+.dark .loading {
+  color: #fff;
 }
