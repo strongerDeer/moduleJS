@@ -4,17 +4,37 @@ export default class SearchResult {
   $searchResult = null;
   data = null;
 
-  constructor({ $target, initialData, onClick, keyword }) {
+  constructor({ $target, initialData, onClick, keyword, onNextPage }) {
     this.$target = $target;
     this.data = initialData;
     this.onClick = onClick;
     this.keyword = keyword;
+    this.onNextPage = onNextPage;
   }
 
   setState(nextData) {
     this.data = nextData;
     this.render();
   }
+
+  listObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          if (entry.intersectionRatio >= 1.0) {
+            observer.unobserve(entry.target);
+
+            let dataIndex = Number(entry.target.dataset.index);
+            if (dataIndex === this.data.length - 1) {
+              this.onNextPage();
+            }
+          }
+        }
+      });
+    },
+    { threshold: 1.0 },
+  );
+
   render() {
     const dataLength = this.data.length;
     const isResult = this.$target.querySelector('.search-result');
@@ -41,9 +61,14 @@ export default class SearchResult {
         type: 'button',
         'data-index': index,
       });
+
+      const $thumbnailWrap = createHTMLElement('div', {
+        class: 'thumb-wrap',
+      });
       const $thumbnail = createHTMLElement('img', {
         src: book.thumbnail,
         alt: '',
+        'data-src': book.thumbnail,
       });
       const $bookTitle = createHTMLElement(
         'p',
@@ -73,7 +98,10 @@ export default class SearchResult {
         this.onClick(this.data[index]);
       });
 
-      $button.appendChild($thumbnail);
+      this.listObserver.observe($button);
+
+      $thumbnailWrap.appendChild($thumbnail);
+      $button.appendChild($thumbnailWrap);
       $button.appendChild($bookTitle);
       $button.appendChild($bookContent);
       $button.appendChild($bookAuthors);

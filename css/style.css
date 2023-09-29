@@ -604,6 +604,7 @@ body {
   font-weight: bold;
   word-break: break-all;
   margin: 1rem 0 0.5rem 0;
+  height: 1.4em;
 }
 .search-result ul li button .book-title,
 .search-result ul li button .book-authors {
@@ -618,6 +619,7 @@ body {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  height: 2.8em;
 }
 .dark .search-result ul li button .book-contents {
   color: white;
@@ -635,6 +637,7 @@ body {
 .search-result ul li button .book-publisher {
   color: #767676;
   font-size: 0.9em;
+  height: 1.4em;
 }
 .dark .search-result ul li button .book-authors,
 .dark .search-result ul li button .book-publisher {
@@ -648,26 +651,31 @@ body {
   }
 }
 
-.search-result ul li img {
+.thumb-wrap {
   width: 100%;
   aspect-ratio: 3/4;
-  object-fit: cover;
   border: 2px solid;
   border-color: white;
   box-sizing: border-box;
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
-.dark .search-result ul li img {
+.dark .thumb-wrap {
   border-color: #272935;
 }
 
 @media screen and (prefers-color-scheme: dark) {
-  .search-result ul li img {
+  .thumb-wrap {
     border-color: #272935;
   }
 }
-.dark .search-result ul li img {
+.dark .thumb-wrap {
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+.thumb-wrap img {
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* 모달 */

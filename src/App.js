@@ -58,7 +58,26 @@ class App {
       },
 
       // 무한스크롤
-      onNextPage: () => {},
+      onNextPage: async () => {
+        this.Loading.show();
+
+        const lastKeyword = JSON.parse(localStorage.getItem('keyword'))[0];
+        const limit = Number(localStorage.getItem('sorting'));
+
+        const page = this.data.page + 1;
+
+        const res = await api.fetchBooks(lastKeyword, limit, page);
+        const newData = res.documents;
+
+        this.setState({
+          items: [...this.data.items, ...newData],
+          page: page,
+        });
+
+        setTimeout(() => {
+          this.Loading.hide();
+        }, 1000);
+      },
     });
 
     // 책정보
