@@ -28,7 +28,8 @@ export default class BookInfo {
 
   render() {
     if (this.data.book) {
-      const { datetime, contents, url } = this.data.book;
+      console.log(this.data.book);
+      const { title, datetime, contents, url } = this.data.book;
       const date = datetime.split('T')[0].split('-');
       const $wrapper = createHTMLElement(
         'div',
@@ -36,6 +37,8 @@ export default class BookInfo {
         null,
       );
       const $section = createHTMLElement('section', { class: 'modal' }, null);
+      const $title = createHTMLElement('h2', { class: 'book-title' }, title);
+
       const $content = createHTMLElement(
         'p',
         { class: 'book-content' },
@@ -44,7 +47,7 @@ export default class BookInfo {
 
       const $url = createHTMLElement(
         'a',
-        { href: url, target: '_blank', title: '새창' },
+        { href: url, target: '_blank', title: '새창', class: 'btn-link' },
         'Daum 검색',
       );
 
@@ -55,8 +58,13 @@ export default class BookInfo {
       ${date[0]}.${date[1]}.${date[2]}
       `,
       );
-      const $close = createHTMLElement('button', null, '닫기');
+      const $close = createHTMLElement(
+        'button',
+        { type: 'button', class: 'btn-close' },
+        '닫기',
+      );
 
+      $section.appendChild($title);
       $section.appendChild($content);
       $section.appendChild($datetime);
       $section.appendChild($url);
