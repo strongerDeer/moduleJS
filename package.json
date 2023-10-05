@@ -1,16 +1,27 @@
 {
+  "homepage": "https://strongerdeer.github.io/moduleJS",
   "name": "modulejs",
   "version": "1.0.0",
   "description": "",
   "main": "apikey.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d docs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.22.20",
-    "jest": "^29.7.0"
+    "css-loader": "^6.8.1",
+    "file-loader": "^6.2.0",
+    "gh-pages": "^6.0.0",
+    "html-webpack-plugin": "^5.5.3",
+    "jest": "^29.7.0",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }
