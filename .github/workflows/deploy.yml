@@ -1,23 +1,7 @@
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+- name: access to secrets
+  run: |
+    echo "MAP_API_KEY=$MAP_API_KEY" >> .env
+  env:
+    REST_API_KEY: ${{secrets.REST_API_KEY}}
 
-      - name: Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Docs
-        run: npm run build
-        
-      - name: Deploy Docs
-        uses: peaceiris/actions-gh-pages@v3
-        env:
-          REST_API_KEY: ${{ secrets.REST_API_KEY }}
