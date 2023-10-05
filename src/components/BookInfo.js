@@ -58,12 +58,16 @@ export default class BookInfo {
       ${date[0]}.${date[1]}.${date[2]}
       `,
       );
-      const $close = createHTMLElement(
-        'button',
-        { type: 'button', class: 'btn-close' },
-        '닫기',
-      );
+      const $close = createHTMLElement('button', {
+        type: 'button',
+        class: 'btn-close',
+      });
+      const $img = createHTMLElement('img', {
+        src: './img/icon-X.svg',
+        alt: '닫기',
+      });
 
+      $close.appendChild($img);
       $section.appendChild($title);
       $section.appendChild($content);
       $section.appendChild($datetime);

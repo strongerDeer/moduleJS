@@ -8,7 +8,7 @@ export default class Banner {
       link: '#',
       publisher: '위즈덤하우스',
       author: '앙투안 드 생텍쥐페리',
-      src: '../img/book01.jpg',
+      src: './img/book01.jpg',
     },
     {
       title: '마이크로카피 2/e',
@@ -16,7 +16,7 @@ export default class Banner {
       link: '#',
       publisher: '에이콘출판',
       author: '킨너렛 이프라',
-      src: '../img/book02.jpg',
+      src: './img/book02.jpg',
     },
     {
       title: '프론트엔드 성능 최적화 가이드',
@@ -24,7 +24,7 @@ export default class Banner {
       link: '#',
       publisher: '프로그래밍 인사이트',
       author: '유동균',
-      src: '../img/book03.jpg',
+      src: './img/book03.jpg',
     },
     {
       title: '기획자의 일',
@@ -32,7 +32,7 @@ export default class Banner {
       link: '#',
       publisher: '비즈니스북스',
       author: '양은우',
-      src: '../img/book04.jpg',
+      src: './img/book04.jpg',
     },
   ];
   current = 0;

@@ -772,40 +772,21 @@ body {
   width: 4.8rem;
   height: 4.8rem;
   border-radius: 50%;
-  background-color: #f8f3ed;
+  background-color: rgba(39, 41, 53, 0.4);
   overflow: hidden;
 }
 .dark .btn-close {
-  background-color: #484c61;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 @media screen and (prefers-color-scheme: dark) {
   .btn-close {
-    background-color: #484c61;
+    background-color: rgba(255, 255, 255, 0.4);
   }
 }
-.btn-close::after {
-  content: "";
-  background-color: #f8f3ed;
-  background-image: url(../img/icon-X.svg);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-size: 2.4rem;
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.dark .btn-close::after {
-  background-color: #484c61;
-}
-
-@media screen and (prefers-color-scheme: dark) {
-  .btn-close::after {
-    background-color: #484c61;
-  }
+.btn-close img {
+  width: 50%;
+  vertical-align: middle;
 }
 
 .btn-link {
@@ -815,7 +796,7 @@ body {
   border-radius: 0.4rem;
   padding: 0 2rem;
   background-color: royalblue;
-  color: #272935;
+  color: #fff;
 }
 .dark .btn-link {
   background-color: royalblue;
@@ -824,14 +805,5 @@ body {
 @media screen and (prefers-color-scheme: dark) {
   .btn-link {
     background-color: royalblue;
-  }
-}
-.dark .btn-link {
-  color: white;
-}
-
-@media screen and (prefers-color-scheme: dark) {
-  .btn-link {
-    color: white;
   }
 }
