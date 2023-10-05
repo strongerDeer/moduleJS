@@ -1,7 +1,8 @@
 jobs:
-- name: access to secrets
-  run: |
-    echo "REST_API_KEY=$REST_API_KEY" >> .env
-  env:
-    REST_API_KEY: ${{secrets.REST_API_KEY}}
+  secrets-test:
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Access Secrets
+        run: |
+          echo "Secret Token : ${{ secrets.REST_API_KEY }}"
