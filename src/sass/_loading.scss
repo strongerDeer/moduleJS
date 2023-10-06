@@ -6,15 +6,22 @@
   height: 100vh;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 2em;
+
   background-color: rgba(0, 0, 0, 0.6);
 
   backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 
-  z-index: 100;
+  z-index: 1000;
 
+  font-size: 1.6em;
+
+  img {
+    height: 4em;
+  }
   @include get-color(color, bg);
   .dark & {
     color: #fff;

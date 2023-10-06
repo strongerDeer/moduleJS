@@ -12,10 +12,10 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'index.html'),
+      template: path.resolve(__dirname, './src/index.html'),
     }),
     new webpack.DefinePlugin({
-      REST_API_KEY: JSON.stringify(process.env.REST_API_KEY),
+      'process.env.REST_API_KEY': JSON.stringify(process.env.REST_API_KEY),
     }),
   ],
 };

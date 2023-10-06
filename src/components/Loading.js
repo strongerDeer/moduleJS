@@ -35,8 +35,16 @@ export default class Loading {
   render() {
     this.$loading.innerHTML = '';
     if (this.data.show) {
-      const $p = createHTMLElement('p', { class: 'loading' }, 'Loading');
-      this.$loading.appendChild($p);
+      const $wrap = createHTMLElement('p', { class: 'loading' });
+      const $p = createHTMLElement('p', null, 'Loading');
+      const $img = createHTMLElement('img', {
+        src: './img/loader.svg',
+        alt: '',
+      });
+
+      $wrap.appendChild($img);
+      $wrap.appendChild($p);
+      this.$loading.appendChild($wrap);
     }
   }
 }

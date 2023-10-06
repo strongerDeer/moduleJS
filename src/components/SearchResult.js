@@ -36,7 +36,7 @@ export default class SearchResult {
   );
 
   render() {
-    const dataLength = this.data.length;
+    const dataLength = this.data && this.data.length;
     const isResult = this.$target.querySelector('.search-result');
 
     if (isResult !== null) {
@@ -55,59 +55,60 @@ export default class SearchResult {
     $wrapper.appendChild($ul);
     this.$target.appendChild($wrapper);
 
-    this.data.forEach((book, index) => {
-      const $li = createHTMLElement('li');
-      const $button = createHTMLElement('button', {
-        type: 'button',
-        'data-index': index,
+    this.data &&
+      this.data.forEach((book, index) => {
+        const $li = createHTMLElement('li');
+        const $button = createHTMLElement('button', {
+          type: 'button',
+          'data-index': index,
+        });
+
+        const $thumbnailWrap = createHTMLElement('div', {
+          class: 'thumb-wrap',
+        });
+        const $thumbnail = createHTMLElement('img', {
+          src: book.thumbnail,
+          alt: '',
+          'data-src': book.thumbnail,
+        });
+        const $bookTitle = createHTMLElement(
+          'p',
+          { class: 'book-title', title: book.title },
+          book.title,
+        );
+
+        const $bookContent = createHTMLElement(
+          'p',
+          { class: 'book-contents' },
+          book.contents.slice(0, 80),
+        );
+        const $bookAuthors = createHTMLElement(
+          'p',
+          { class: 'book-authors', title: book.authors },
+
+          `저자: ${book.authors}`,
+        );
+        const $bookPublisher = createHTMLElement(
+          'p',
+          { class: 'book-publisher', title: book.publisher },
+          `출판사: ${book.publisher}`,
+        );
+
+        $button.addEventListener('click', (e) => {
+          const index = Number(e.currentTarget.getAttribute('data-index'));
+          this.onClick(this.data[index]);
+        });
+
+        this.listObserver.observe($button);
+
+        $thumbnailWrap.appendChild($thumbnail);
+        $button.appendChild($thumbnailWrap);
+        $button.appendChild($bookTitle);
+        $button.appendChild($bookContent);
+        $button.appendChild($bookAuthors);
+        $button.appendChild($bookPublisher);
+        $li.appendChild($button);
+        $ul.appendChild($li);
       });
-
-      const $thumbnailWrap = createHTMLElement('div', {
-        class: 'thumb-wrap',
-      });
-      const $thumbnail = createHTMLElement('img', {
-        src: book.thumbnail,
-        alt: '',
-        'data-src': book.thumbnail,
-      });
-      const $bookTitle = createHTMLElement(
-        'p',
-        { class: 'book-title', title: book.title },
-        book.title,
-      );
-
-      const $bookContent = createHTMLElement(
-        'p',
-        { class: 'book-contents' },
-        book.contents.slice(0, 80),
-      );
-      const $bookAuthors = createHTMLElement(
-        'p',
-        { class: 'book-authors', title: book.authors },
-
-        `저자: ${book.authors}`,
-      );
-      const $bookPublisher = createHTMLElement(
-        'p',
-        { class: 'book-publisher', title: book.publisher },
-        `출판사: ${book.publisher}`,
-      );
-
-      $button.addEventListener('click', (e) => {
-        const index = Number(e.currentTarget.getAttribute('data-index'));
-        this.onClick(this.data[index]);
-      });
-
-      this.listObserver.observe($button);
-
-      $thumbnailWrap.appendChild($thumbnail);
-      $button.appendChild($thumbnailWrap);
-      $button.appendChild($bookTitle);
-      $button.appendChild($bookContent);
-      $button.appendChild($bookAuthors);
-      $button.appendChild($bookPublisher);
-      $li.appendChild($button);
-      $ul.appendChild($li);
-    });
   }
 }
